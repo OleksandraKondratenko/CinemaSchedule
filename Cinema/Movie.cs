@@ -6,13 +6,28 @@ namespace Cinema
 {
     public class Movie
     {
-        public int TimeMovieInMinuts { get; set; }
+        public int DurationInMinuts { get; set; }
         public string Title { get; set; }
 
         public Movie(int duratoinFilmInMinuts, string nameFilm)
         {
-            TimeMovieInMinuts = duratoinFilmInMinuts;
+            DurationInMinuts = duratoinFilmInMinuts;
             Title = nameFilm;
+        }
+        public override bool Equals(object obj)
+        {
+            bool equal = false;
+            Movie movie = obj as Movie;
+
+            if (!(movie is null))
+            {
+                if (DurationInMinuts == movie.DurationInMinuts && Title == movie.Title)
+                {
+                    equal = true;
+                }
+            }
+
+            return equal;
         }
     }
 }
