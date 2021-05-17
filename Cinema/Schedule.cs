@@ -6,14 +6,6 @@ namespace Cinema
 {
     public class Schedule
     {
-        public DateTime _currentTime;
-        
-
-        public Schedule(DateTime currentTime)
-        {
-            _currentTime = currentTime;
-        }
-    
 
         public int CountUniqueMovies(Dictionary<DateTime, Movie> сurrentMovie)
         {
@@ -34,24 +26,26 @@ namespace Cinema
             return counter;
         }
 
-        public bool IsAbleToAddFilm(Movie movie, Dictionary<DateTime, Movie> сurrentSchedule)
+        public bool IsAbleToAddFilm(Movie movie, Dictionary<DateTime, Movie> сurrentSchedule, DateTime currentTime)
         {
+            bool result = false;
 
-            if (_currentTime.AddMinutes(movie.DurationInMinuts) <= DataCinema.closeHours)
+            if (currentTime.AddMinutes(movie.DurationInMinuts) <= DataCinema.closeHours)
             {
-               
-                
-                сurrentSchedule.Add(_currentTime, movie);
-                _currentTime = _currentTime.AddMinutes(movie.DurationInMinuts);
-                return true;
+                сurrentSchedule.Add(currentTime, movie);
+              
+                result = true;
+            }
+            else
+            {
+                result = false;
             }
 
-            return false;
+            return result;
         }
 
         public void RemoveLastFilm(Dictionary<DateTime, Movie> сurrentSchedule)
         {
-            _currentTime = сurrentSchedule.Keys.Last();
             сurrentSchedule.Remove(сurrentSchedule.Keys.Last());
         }
     }
