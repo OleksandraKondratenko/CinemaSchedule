@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Cinema
 {
-    public class ScheduleForOneHall
+    public class CinemaSchedule
     {
         private Schedule _schedule;
         public Dictionary<DateTime, Movie> bestSchedule;
         public List<Dictionary<DateTime, Movie>> allSchedules;
 
-        public ScheduleForOneHall()
+        public CinemaSchedule()
         {
             _schedule = new Schedule();
             allSchedules = new List<Dictionary<DateTime, Movie>>();
@@ -59,7 +59,7 @@ namespace Cinema
         public override bool Equals(object obj)
         {
             bool equal = false;
-            ScheduleForOneHall scheduleForOneHall = obj as ScheduleForOneHall;
+            CinemaSchedule scheduleForOneHall = obj as CinemaSchedule;
             if(!(scheduleForOneHall is null))
             {
                 if (scheduleForOneHall.bestSchedule.Count == bestSchedule.Count)

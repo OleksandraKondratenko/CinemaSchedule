@@ -6,20 +6,20 @@ namespace Cinema.Tests
 {
     public class Tests
     {
-        ScheduleForOneHall scheduleForOneHall;
+        CinemaSchedule cinemaSchedule;
 
         [SetUp]
         public void Setup()
         {
-            scheduleForOneHall = new ScheduleForOneHall();
+            cinemaSchedule = new CinemaSchedule();
         }
 
         [TestCaseSource(nameof(ExpectedSchedule))]
         public void CreateSchedule_WhenAllFilmsAreDifferent_ShouldCreateRightSchedule(Dictionary<DateTime, Movie> expected)
         {
-            scheduleForOneHall.CreateSchedule();
+            cinemaSchedule.CreateSchedule();
 
-            CollectionAssert.AreEquivalent(expected, scheduleForOneHall.bestSchedule);
+            CollectionAssert.AreEquivalent(expected, cinemaSchedule.bestSchedule);
         }
 
         private static IEnumerable<object[]> ExpectedSchedule()
@@ -35,9 +35,9 @@ namespace Cinema.Tests
         [TestCaseSource(nameof(ExpectedSchedulesInDifferetHals))]
         public void CreateSchedules_WhenAreSeveralHalls_ShouldCreateDifetentSchedules(List<Dictionary<DateTime, Movie>> expected)
         {
-            scheduleForOneHall.SetSchedulesForDifferentHalls(2);
+            cinemaSchedule.SetSchedulesForDifferentHalls(2);
 
-            CollectionAssert.AreEquivalent(expected, scheduleForOneHall.allSchedules);
+            CollectionAssert.AreEquivalent(expected, cinemaSchedule.allSchedules);
         }
 
         private static IEnumerable<object[]> ExpectedSchedulesInDifferetHals()
