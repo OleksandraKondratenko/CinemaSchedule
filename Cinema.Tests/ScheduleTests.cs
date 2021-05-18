@@ -69,7 +69,7 @@ namespace Cinema.Tests
         private static IEnumerable<object[]> CurrentScheduleForCheckPosibilityToAddMovie()
         {
             yield return new object[] {new Movie(90, "AbraKadabra")
-                ,new Dictionary<DateTime, Movie>(){ }, DataCinema.openHours, true};
+                ,new Dictionary<DateTime, Movie>(){ }, CinemaWorkTime.openHours, true};
 
             yield return new object[] { new Movie(90, "AbraKadabra")
                 ,new Dictionary<DateTime, Movie>()

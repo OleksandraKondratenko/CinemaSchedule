@@ -9,10 +9,10 @@ namespace Cinema
         public int DurationInMinuts { get; set; }
         public string Title { get; set; }
 
-        public Movie(int duratoinFilmInMinuts, string nameFilm)
+        public Movie(int duratoinInMinuts, string title)
         {
-            DurationInMinuts = duratoinFilmInMinuts;
-            Title = nameFilm;
+            DurationInMinuts = duratoinInMinuts;
+            Title = title;
         }
         public override bool Equals(object obj)
         {

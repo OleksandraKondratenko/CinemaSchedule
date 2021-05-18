@@ -9,9 +9,24 @@ namespace Cinema
         private Schedule _schedule;
         public Dictionary<DateTime, Movie> bestSchedule;
         public List<Dictionary<DateTime, Movie>> allSchedules;
-
+        public List<Movie> Movies;
         public CinemaSchedule()
         {
+            Movies = new List<Movie>()
+            {
+            new Movie(90, "Kopitoshka1"),
+            new Movie(90, "Kopitoshka2"),
+            new Movie(90, "Kopitoshka3"),
+            new Movie(90, "Kopitoshka4"),
+            new Movie(90, "Kopitoshka5"),
+            new Movie(90, "Kopitoshka6"),
+            new Movie(90, "Kopitoshka7"),
+            new Movie(90, "Kopitoshka8"),
+            new Movie(90, "Kopitoshka9"),
+            new Movie(90, "Kopitoshka10"),
+            new Movie(135, "Kopitoshka11")
+         };
+
             _schedule = new Schedule();
             allSchedules = new List<Dictionary<DateTime, Movie>>();
         }
@@ -27,22 +42,22 @@ namespace Cinema
             }
         }
 
-        public void CreateSchedule(DateTime currentTime=default(DateTime)
+        public void CreateSchedule(DateTime currentTime = default(DateTime)
             , Dictionary<DateTime, Movie> сurrentSchedule = null)
         {
             if (сurrentSchedule is null)
             {
                 сurrentSchedule = new Dictionary<DateTime, Movie>();
-                currentTime = DataCinema.openHours;
+                currentTime = CinemaWorkTime.openHours;
             }
 
-            foreach (var movie in DataCinema.Movies)
+            foreach (var movie in Movies)
             {
                 bool isAdded = false;
                 if (_schedule.IsAbleToAddFilm(movie, сurrentSchedule, currentTime))
                 {
                     currentTime = currentTime.AddMinutes(movie.DurationInMinuts);
-                    CreateSchedule(currentTime,сurrentSchedule);
+                    CreateSchedule(currentTime, сurrentSchedule);
                     isAdded = true;
                 }
 
@@ -60,10 +75,10 @@ namespace Cinema
         {
             bool equal = false;
             CinemaSchedule scheduleForOneHall = obj as CinemaSchedule;
-            if(!(scheduleForOneHall is null))
+            if (!(scheduleForOneHall is null))
             {
                 if (scheduleForOneHall.bestSchedule.Count == bestSchedule.Count)
-                { 
+                {
                     equal = true;
                     foreach (var pair in scheduleForOneHall.bestSchedule)
                     {
@@ -85,7 +100,7 @@ namespace Cinema
                 }
             }
             return equal;
-           
+
         }
 
         private void SetTheBestSchedule(Dictionary<DateTime, Movie> сurrentSchedule)
@@ -106,14 +121,14 @@ namespace Cinema
 
         private void СhangeTheSequenceOfMovies()
         {
-            int index = DataCinema.Movies.IndexOf(bestSchedule.Values.Last());
+            int index = Movies.IndexOf(bestSchedule.Values.Last());
             List<Movie> temp = new List<Movie>();
 
-            for (int i = 0; i < DataCinema.Movies.Count; i++)
+            for (int i = 0; i < Movies.Count; i++)
             {
                 if (i > index)
                 {
-                    temp.Add(DataCinema.Movies[i]);
+                    temp.Add(Movies[i]);
                 }
             }
 
@@ -121,7 +136,7 @@ namespace Cinema
             {
                 temp.Add(movie.Value);
             }
-            DataCinema.Movies = temp;
+           Movies = temp;
         }
 
 

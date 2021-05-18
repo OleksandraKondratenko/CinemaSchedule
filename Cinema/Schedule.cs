@@ -30,7 +30,7 @@ namespace Cinema
         {
             bool result = false;
 
-            if (currentTime.AddMinutes(movie.DurationInMinuts) <= DataCinema.closeHours)
+            if (currentTime.AddMinutes(movie.DurationInMinuts) <= CinemaWorkTime.closeHours)
             {
                 сurrentSchedule.Add(currentTime, movie);
               
