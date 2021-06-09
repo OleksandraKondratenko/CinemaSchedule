@@ -9,26 +9,26 @@ namespace Cinema
         private Schedule _schedule;
         public Dictionary<DateTime, Movie> bestSchedule;
         public List<Dictionary<DateTime, Movie>> allSchedules;
-        public List<Movie> Movies;
-        public CinemaSchedule()
+        private List<Movie> Movies;
+        public static DateTime openHours ;
+        public static DateTime closeHours;
+        private CinemaSchedule(List<Movie> movies)
         {
-            Movies = new List<Movie>()
-            {
-            new Movie(90, "Kopitoshka1"),
-            new Movie(90, "Kopitoshka2"),
-            new Movie(90, "Kopitoshka3"),
-            new Movie(90, "Kopitoshka4"),
-            new Movie(90, "Kopitoshka5"),
-            new Movie(90, "Kopitoshka6"),
-            new Movie(90, "Kopitoshka7"),
-            new Movie(90, "Kopitoshka8"),
-            new Movie(90, "Kopitoshka9"),
-            new Movie(90, "Kopitoshka10"),
-            new Movie(135, "Kopitoshka11")
-         };
-
+            Movies = movies;
             _schedule = new Schedule();
             allSchedules = new List<Dictionary<DateTime, Movie>>();
+        }
+
+        public static CinemaSchedule Create(List<Movie> movies)
+        {
+            if(movies!= null && movies.Count > 0)
+            {
+                return new CinemaSchedule(movies);
+            }
+            else
+            {
+                throw new NullReferenceException("List with movies is empty");
+            }
         }
 
         public void SetSchedulesForDifferentHalls(int hallQuantity)
@@ -108,7 +108,9 @@ namespace Cinema
 
             if (!(bestSchedule is null))
             {
-                if (_schedule.CountUniqueMovies(bestSchedule) < _schedule.CountUniqueMovies(сurrentSchedule))
+                
+                if (CountCoeficientForChosingBestMovie(bestSchedule) 
+                    < CountCoeficientForChosingBestMovie(сurrentSchedule) )
                 {
                     bestSchedule = new Dictionary<DateTime, Movie>(сurrentSchedule);
                 }
@@ -119,6 +121,14 @@ namespace Cinema
             }
         }
 
+        private double CountCoeficientForChosingBestMovie(Dictionary<DateTime, Movie> сurrentSchedule)
+        {
+            DateTime dateTime = сurrentSchedule.Keys.Last().AddMinutes(сurrentSchedule.Values.Last().DurationInMinuts);
+           
+            return 0.8 * _schedule.CountUniqueMovies(сurrentSchedule)
+               + 0.2 * 1/_schedule.CheckLeftTime(dateTime);
+            ;
+        }
         private void СhangeTheSequenceOfMovies()
         {
             int index = Movies.IndexOf(bestSchedule.Values.Last());

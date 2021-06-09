@@ -27,32 +27,32 @@ namespace Cinema.Tests
         {
             yield return new object[] { new Dictionary<DateTime, Movie>()
             {
-                { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka3")}
+                 { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                 ,{ new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")}
+                 ,{new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka3")}
             }, 3};
 
             yield return new object[] { new Dictionary<DateTime, Movie>()
             {
-                { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka1")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka1")}
+                { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                ,{ new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka1")}
+                ,{ new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka1")}
             }, 1};
 
             yield return new object[] { new Dictionary<DateTime, Movie>()
             {
-                { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka1")}
+                { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                ,{ new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")}
+                ,{ new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka1")}
             }, 2};
 
             yield return new object[] { new Dictionary<DateTime, Movie>()
             {
-                { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka3")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(14, 30, 0)),  new Movie(90, "Kopitoshka4")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(16, 00, 0)),  new Movie(90, "Kopitoshka5")}
+                { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                ,{ new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")}
+                ,{ new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka3")}
+                ,{ new DateTime(2020, 2, 20, 14, 30, 0),  new Movie(90, "Kopitoshka4")}
+                ,{  new DateTime(2020, 2, 20, 16, 0, 0),  new Movie(90, "Kopitoshka5")}
             }, 5};
 
         }
@@ -74,19 +74,19 @@ namespace Cinema.Tests
             yield return new object[] { new Movie(90, "AbraKadabra")
                 ,new Dictionary<DateTime, Movie>()
             {
-                { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
+                {  new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
             }
-                ,DateTime.Now.Date.Add(new TimeSpan(11, 30, 0))
+                ,new DateTime(2020, 2, 20, 11, 30, 0)
                 ,true};
 
             yield return new object[] { new Movie(90, "AbraKadabra")
             ,new Dictionary<DateTime, Movie>()
             {
-                { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")}
-                ,{ DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka1")}
+                { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                ,{new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")}
+                ,{ new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka1")}
             }
-            , DateTime.Now.Date.Add(new TimeSpan(14, 30, 0))
+            ,  new DateTime(2020, 2, 20, 14, 30, 0)
             ,false};
         }
 
@@ -104,28 +104,46 @@ namespace Cinema.Tests
             yield return new object[] {
                 new Dictionary<DateTime, Movie>()
                  {
-                    { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                    ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")}
-                    ,{ DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka3")}
+                    { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                    ,{ new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")}
+                    ,{new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka3")}
                  },
                 new Dictionary<DateTime, Movie>()
                 {
-                    { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                    ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")}
+                    { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                    ,{ new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")}
                 }};
 
             yield return new object[] {
                 new Dictionary<DateTime, Movie>()
                  {
-                    { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
-                    ,{ DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")}
+                    { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
+                    ,{ new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")}
                  },
                 new Dictionary<DateTime, Movie>()
                 {
-                    { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")}
+                    { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")}
                 }};
 
            
+        }
+
+        [TestCaseSource(nameof(DataForCheckLeftTimeToTheEndWorkDay))]
+        public void CheckLeftTime_WhenWeCantAddOneMoreMovie_ShouldCountTimeToEndEorkDay(
+           DateTime dataTime, double expected)
+        {
+            double actual = schedule.CheckLeftTime(dataTime);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        private static IEnumerable<object[]> DataForCheckLeftTimeToTheEndWorkDay()
+        {
+            yield return new object[] {new DateTime(2020, 2, 20, 13, 0, 0),  120};
+            yield return new object[] {new DateTime(2020, 2, 20, 14, 0, 0),  60};
+            yield return new object[] {new DateTime(2020, 2, 20, 14, 30, 0),  30};
+
+          
         }
 
     }

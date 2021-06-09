@@ -48,5 +48,11 @@ namespace Cinema
         {
             сurrentSchedule.Remove(сurrentSchedule.Keys.Last());
         }
+
+        public double CheckLeftTime( DateTime lastMovieTime)
+        {
+            var difference = CinemaWorkTime.closeHours - lastMovieTime;
+            return difference.TotalMinutes;
+        }
     }
 }

@@ -7,11 +7,24 @@ namespace Cinema.Tests
     public class Tests
     {
         CinemaSchedule cinemaSchedule;
-
+        List<Movie> Movies = new List<Movie>()
+            {
+            new Movie(90, "Kopitoshka1"),
+            new Movie(90, "Kopitoshka2"),
+            new Movie(90, "Kopitoshka3"),
+            new Movie(90, "Kopitoshka4"),
+            new Movie(90, "Kopitoshka5"),
+            new Movie(90, "Kopitoshka6"),
+            new Movie(90, "Kopitoshka7"),
+            new Movie(90, "Kopitoshka8"),
+            new Movie(90, "Kopitoshka9"),
+            new Movie(90, "Kopitoshka10"),
+            new Movie(135, "Kopitoshka11")
+         };
         [SetUp]
         public void Setup()
         {
-            cinemaSchedule = new CinemaSchedule();
+            cinemaSchedule = CinemaSchedule.Create(Movies);
         }
 
         [TestCaseSource(nameof(ExpectedSchedule))]
@@ -26,9 +39,9 @@ namespace Cinema.Tests
         {
             yield return new object[] { new Dictionary<DateTime, Movie>()
             {
-                { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")},
-                { DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")},
-                { DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka3")}
+                { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")},
+                { new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")},
+                {new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka3")}
             }};
         }
 
@@ -46,15 +59,15 @@ namespace Cinema.Tests
             {
                 new Dictionary<DateTime, Movie>()
                 {
-                    { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka1")},
-                    { DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka2")},
-                    { DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka3")}
+                    { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka1")},
+                    { new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka2")},
+                    {new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka3")}
                 },
                 new Dictionary<DateTime, Movie>()
                 {
-                    { DateTime.Now.Date.Add(new TimeSpan(10, 0, 0)),  new Movie(90, "Kopitoshka4")},
-                    { DateTime.Now.Date.Add(new TimeSpan(11, 30, 0)),  new Movie(90, "Kopitoshka5")},
-                    { DateTime.Now.Date.Add(new TimeSpan(13, 00, 0)),  new Movie(90, "Kopitoshka6")}
+                    { new DateTime(2020, 2, 20, 10, 0, 0),  new Movie(90, "Kopitoshka4")},
+                    { new DateTime(2020, 2, 20, 11, 30, 0),  new Movie(90, "Kopitoshka5")},
+                    {new DateTime(2020, 2, 20, 13, 0, 0),  new Movie(90, "Kopitoshka6")}
                 }
             }
             };
